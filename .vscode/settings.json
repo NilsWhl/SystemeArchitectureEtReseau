@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "station.h": "c"
+        "station.h": "c",
+        "mac.h": "c",
+        "ip.h": "c"
     }
 }

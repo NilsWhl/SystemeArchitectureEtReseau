@@ -8,7 +8,7 @@ void afficherMAC(mac adr);
 mac lireMAC(const char* ligne);
 
 // Retourne une chaîne (char*) représentant l'adresse MAC (à libérer par l'appelant)
-char* ecrireMAC(mac adr)
+char* ecrireMAC(mac adr);
 
 // Compare deux adresses MAC, retourne true si elles sont identiques
-bool equals(mac a, mac b)
+bool equals(mac a, mac b);
