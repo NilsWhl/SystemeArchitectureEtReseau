@@ -1,32 +1,59 @@
-#ifndef RESEAU_H
-#define RESEAU_H
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <string.h>
 
-#include "station.h"
-#include "switch.h"
+// def de lien entre les machines (arete)
+struct lien {
+    machine machine_1;
+    machine machine_2;
+}lien;
 
-typedef enum {
-    TYPE_STATION,
-    TYPE_SWITCH
-} type_machine;
+// def enumeration de machine, pour test le type de l'union machine_u
+typedef enum machine_t{
+  TYPE_STATION ,
+  TYPE_SWITCH 
+} machine_t;
 
-typedef union {
+// def union de type station et type switch
+typedef union machine_u {
     station station;
-    switch_t sWitch;
-} machine;
+    switch switch;
+}machine_u ;
 
-typedef struct {
-    type_machine type;
-    machine donnee;
-} element_tabMachine;
+//def structure qui joint les types station et switch
+typedef struct machine{
+    machine_t type;
+    machine_u donnee;
+}machine;
 
-#define MAX_MACHINES 100
+// def reseau (graphe)
+typedef struct reseau{
+    uint8_t nb_machine;
+    uint8_t nb_lien;
+    uint8_t lien_capacite;
+    machine* tabMachine;
+    // tab[0].type = TYPE_STATION
+    // tab[0].donnee.station.adrMac =...
+    // tab[0].donnee.station.adrIP=...
+    //
+    // tab[1].type = TYPE_SWITCH;
+    // tab[1].donnee.switch.adrMac = ...;
+    // tab[1].donnee.switch.nbPort = ...;
+    // tab[1].donnee.switch.priorite = ..;
+    // tab[1].donnee.switch.tabCommu = .. ;
+    
 
-typedef struct {
-    element_tabMachine tabSommet[MAX_MACHINES];
-    int nombreMachines;
-} reseau;
+}reseau;
 
-int getNombreMachine(reseau r);
-int getNombreConnexion(reseau r);
+void initReseau(reseau* r)
+void deinitReseau(reseau* r)
 
-#endif // RESEAU_H
+uint8_t getNombreMachine(reseau* const r)
+uint8_t getNombreConnexion(reseau* const r)
+
+void ajouterMachine (reseau* const r, machine m)
+bool existeLien (reseau* const r, lien l)
+void ajouterLien (reseau* const r, lien l)
+
+void initLien(machine m1, machine m2)
