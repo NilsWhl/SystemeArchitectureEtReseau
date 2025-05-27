@@ -3,21 +3,30 @@
 #include "reseau.h"
 #include "station.h"
 #include "switch.h"
+#include <string.h>
+#include <stdio.h>
 
 int main() {
-    // Exemple d'utu<lisation des structures et fonctions
-    struct reseau monReseau;
+    reseau monReseau;
     monReseau.nombreMachines = 0;
 
     // création d'une station
-    struct station maStation;
-    // Definir l'adresse MAC et IP de la station
-    mac maStationMac = {0x00, 0x1A, 0x2B, 0x3C, 0x4D, 0x5E}; // adresse au pif
-    ip maStationIp = {192,168, 1, 1}; // adresse au pif
+    station maStation;
+    mac maStationMac = {0x00, 0x1A, 0x2B, 0x3C, 0x4D, 0x5E};
+    ip maStationIp = {192,168, 1, 1};
 
-    maStation.adrMac = maStationMac;
-    maStation.adrIp = maStationIp;
-    
+    memcpy(maStation.adrMac, maStationMac, sizeof(mac));
+    memcpy(maStation.adrIp, maStationIp, sizeof(ip));
+
+    // Préparer un element_tabMachine pour la station
+    element_tabMachine elem;
+    elem.type = TYPE_STATION;
+    elem.donnee.station = maStation;
+
     // Ajout de la station au réseau
-    //monReseau.tabSommet
+    monReseau.tabSommet[monReseau.nombreMachines] = elem;
+    monReseau.nombreMachines++;
+
+    printf("Nombre de machines dans le réseau : %d\n", monReseau.nombreMachines);
+    return 0;
 }

@@ -1,10 +1,10 @@
 #ifndef SWITCH_H
 #define SWITCH_H
 
-#include "mac.h" // Assuming mac is defined in mac.h
-#include <stdint.h> // For int8_t
-#include <stdbool.h> // For bool type
-#include <stddef.h>  // For size_t if needed
+#include "mac.h"
+#include <stdint.h>
+#include <stdbool.h>
+#include <stddef.h>
 
 typedef struct tabCommutation {
     int index;
@@ -16,18 +16,19 @@ typedef struct switch_t {
     mac adrMac;
     int nbPort;
     int8_t priorite;
-    tabCommutation tabCommu;
+    tabCommutation* tabCommu; // pointer to table of commutations
+    int tailleTabCommu;       // number of entries in the table
 } switch_t;
 
-// Function prototypes (add return types and argument names)
+// Function prototypes
 void creerConnexion(mac adrMac, int port);
-void supprimerConnexion(int port);
-void supprimerConnexion(mac adrMac);
+void supprimerConnexion_parPort(int port); // renamed to avoid duplicate
+void supprimerConnexion_parMac(mac adrMac); // renamed to avoid duplicate
 
-bool macExisteDansTable(mac adrMac); // Assuming you want a boolean return
-bool portLibre(int port);           // Assuming you want a boolean return
+bool macExisteDansTable(mac adrMac);
+bool portLibre(int port);
 
-void envoyerBPDU(void* BPDU, int port); // Assuming BPDU is a type, replace void* with actual type if known
+void envoyerBPDU(void* BPDU, int port);
 void resoudreBPDU();
 
 #endif // SWITCH_H

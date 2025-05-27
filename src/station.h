@@ -1,7 +1,17 @@
-struct station{
+#ifndef STATION_H
+#define STATION_H
+
+#include "mac.h"
+#include "ip.h"
+
+typedef struct {
     mac adrMac;
     ip adrIp;
-};
+} station;
 
-mac getMac(struct station station);
-ip getIP(struct station station);
+// Copies the MAC address from the station to 'out'
+void getMac(station s, mac out);
+// Copies the IP address from the station to 'out'
+void getIP(station s, ip out);
+
+#endif // STATION_H

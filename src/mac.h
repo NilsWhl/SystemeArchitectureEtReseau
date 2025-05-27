@@ -1,3 +1,9 @@
+#ifndef MAC_H
+#define MAC_H
+
+#include <stdint.h>
+#include <stdbool.h>
+
 // Définition d'une adresse MAC
 typedef int8_t mac[6];
 
@@ -5,10 +11,12 @@ typedef int8_t mac[6];
 void afficherMAC(mac adr);
 
 // Affichage sans possibilite de modification grace a const
-mac lireMAC(const char* ligne);
+void lireMAC(const char* ligne);
 
 // Retourne une chaîne (char*) représentant l'adresse MAC (à libérer par l'appelant)
 char* ecrireMAC(mac adr);
 
 // Compare deux adresses MAC, retourne true si elles sont identiques
-bool equals(mac a, mac b);
+bool mac_equals(mac a, mac b);
+
+#endif // MAC_H

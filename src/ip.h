@@ -1,3 +1,6 @@
+#ifndef IP_H
+#define IP_H
+
 // Definition d'une adresse IP
 #include <stdint.h> // Pour int8_t
 #include <stdio.h>  // Pour printf
@@ -6,15 +9,15 @@
 typedef int8_t ip[4];
 
 // Affiche l'adresse IP (format : a.b.c.d)
-void afficherIP(ip adr) {
-    printf("%d.%d.%d.%d", adr[0], adr[1], adr[2], adr[3]);
-}
+void afficherIP(ip adr);
 
 // Affichage sans possibilité de modification grâce à const
-ip lireIP(const char* ligne);
+void lireIP(const char* ligne);
 
 // Retourne une chaîne (char*) représentant l'adresse IP (à libérer par l'appelant)
 char* ecrireIP(ip adr);
 
 // Compare deux adresses IP, retourne true si elles sont identiques
-bool equals(ip a, ip b);
+bool ip_equals(ip a, ip b);
+
+#endif // IP_H
