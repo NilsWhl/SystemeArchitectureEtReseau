@@ -92,7 +92,7 @@ void afficher_trame_ethernet_hex(const ethernet_frame* trame) {
         printf("%02x ", trame->adresse_source[i]);
     }
     
-    // Affiche le type
+    // Affiche le type en deux octets
     printf("%02x %02x ", (trame->type >> 8) & 0xFF, trame->type & 0xFF);
     
     // Affiche les données
@@ -102,7 +102,7 @@ void afficher_trame_ethernet_hex(const ethernet_frame* trame) {
     
     // Affiche le FCS
     for (i = 0; i < ETHERNET_FCS_SIZE; i++) {
-        printf("%02x ", trame->fcs[i]);
+        printf("%02x ", trame->fcs[i]); 
     }
     
     printf("\n");
