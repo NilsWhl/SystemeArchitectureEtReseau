@@ -118,7 +118,7 @@ void remplirReseauAvecFichier (FILE* fichier, reseau* r)
         {
            //test si machine est station ou switch
             char* stype;
-            printf("ligne %u:    %s",compteurLigne, ligne);
+            //printf("ligne %u:    %s",compteurLigne, ligne);
             extraireChaine(ligne, ';', &stype, &apres1);
 
             if (strcmp(stype,"2") == 0) // la machine est un switch
@@ -176,7 +176,7 @@ void remplirReseauAvecFichier (FILE* fichier, reseau* r)
             char* spoids;
             char* apres;
             char* reste;
-            printf("ligne %u:    %s",compteurLigne, ligne);
+            //printf("ligne %u:    %s",compteurLigne, ligne);
             extraireChaine(ligne, ';', &sm1, &apres);
             reste = apres;
             extraireChaine(reste, ';', &sm2, &apres);
@@ -187,7 +187,7 @@ void remplirReseauAvecFichier (FILE* fichier, reseau* r)
             int8_t indiceM2 = atoi(sm2);
             int8_t intPoids = atoi(spoids);
             
-            printf("indicem1 : %u, indicem2: %u\n", indiceM1, indiceM2);
+            //printf("indicem1 : %u, indicem2: %u\n", indiceM1, indiceM2);
             lien l = initLien(r->tabMachine[indiceM1], r->tabMachine[indiceM2], intPoids);
 
             // inseré dans reseau

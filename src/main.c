@@ -46,7 +46,7 @@ int main() {
     
     fclose(f);
     
-    printf("lien");
+    //printf("lien");
 
     affichageReseau(&r);
     deinitReseau(&r);

@@ -23,17 +23,17 @@ void afficher_trame_ethernet(const ethernet_frame* trame) {
     // Affiche le préambule
     printf("Préambule : ");
     for (i = 0; i < ETHERNET_PREAMBULE_SIZE; i++) {
-        printf("%02x ", trame->preambule[i]);
+        printf("%02X ", trame->preambule[i]);
     }
     printf("\n");
     
     // Affiche le SFD
-    printf("SFD : %02x\n", trame->sfd);
+    printf("SFD : %02X\n", trame->sfd);
     
     // Affiche l'adresse destination
     printf("Adresse destination : ");
     for (i = 0; i < ETHERNET_MAC_SIZE; i++) {
-        printf("%02x", trame->adresse_destination[i]);
+        printf("%02X", trame->adresse_destination[i]);
         if (i < ETHERNET_MAC_SIZE - 1) {
             printf(":");
         }
@@ -43,7 +43,7 @@ void afficher_trame_ethernet(const ethernet_frame* trame) {
     // Affiche l'adresse source
     printf("Adresse source : ");
     for (i = 0; i < ETHERNET_MAC_SIZE; i++) {
-        printf("%02x", trame->adresse_source[i]);
+        printf("%02X", trame->adresse_source[i]);
         if (i < ETHERNET_MAC_SIZE - 1) {
             printf(":");
         }
@@ -51,12 +51,12 @@ void afficher_trame_ethernet(const ethernet_frame* trame) {
     printf("\n");
     
     // Affiche le type
-    printf("Type : 0x%04x\n", trame->type);
+    printf("Type : 0x%04X\n", trame->type);
     
     // Affiche les données
     printf("Données (%zu octets) : ", trame->data_length);
     for (i = 0; i < trame->data_length; i++) {
-        printf("%02x ", trame->data[i]);
+        printf("%02X ", trame->data[i]);
     }
     printf("\n");
     
@@ -76,33 +76,33 @@ void afficher_trame_ethernet_hex(const ethernet_frame* trame) {
     
     // Affiche le préambule
     for (i = 0; i < ETHERNET_PREAMBULE_SIZE; i++) {
-        printf("%02x ", trame->preambule[i]);
+        printf("%02X ", trame->preambule[i]);
     }
     
     // Affiche le SFD
-    printf("%02x ", trame->sfd);
+    printf("%02X ", trame->sfd);
     
     // Affiche l'adresse destination
     for (i = 0; i < ETHERNET_MAC_SIZE; i++) {
-        printf("%02x ", trame->adresse_destination[i]);
+        printf("%02X ", trame->adresse_destination[i]);
     }
     
     // Affiche l'adresse source
     for (i = 0; i < ETHERNET_MAC_SIZE; i++) {
-        printf("%02x ", trame->adresse_source[i]);
+        printf("%02X ", trame->adresse_source[i]);
     }
     
     // Affiche le type en deux octets
-    printf("%02x %02x ", (trame->type >> 8) & 0xFF, trame->type & 0xFF);
+    printf("%02X %02X ", (trame->type >> 8) & 0xFF, trame->type & 0xFF);
     
     // Affiche les données
     for (i = 0; i < trame->data_length; i++) {
-        printf("%02x ", trame->data[i]);
+        printf("%02X ", trame->data[i]);
     }
     
     // Affiche le FCS
     for (i = 0; i < ETHERNET_FCS_SIZE; i++) {
-        printf("%02x ", trame->fcs[i]); 
+        printf("%02X ", trame->fcs[i]); 
     }
     
     printf("\n");
