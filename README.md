@@ -1,5 +1,8 @@
 # S21-SAE
 
+Voir le pdf pour les consignes :
+[Consigne.pdf](2023%20-%20sae.pdf)
+
 ## Structure du code
 
 ### `reseau.c`
